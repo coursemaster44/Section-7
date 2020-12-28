@@ -161,7 +161,7 @@ Click on Create Build Project
 
 Click on Start build
 
-**Step 5.Provide Build configuration:
+**Step 5.Provide Build configuration:**
 - Project - cb-project-s3
 - Build type - Single build
 - Timeout - 0 Hours 5 Minutes
@@ -169,7 +169,7 @@ Click on Start build
 Click on Start Build
 
 
-**Step 6. Check the status of every step of all phases in phase details-
+**Step 6. Check the status of every step of all phases in phase details-**
 ```sh
 SUBMITTED - succeed
 QUEUED    - succeed
@@ -180,11 +180,11 @@ COMPLETED       - succeed
 ```
 
 
-**Step 7. Goto IAM>Roles>codebuild-first-cd-project-service-role
+**Step 7. Goto IAM>Roles>codebuild-first-cd-project-service-role**
 - Click on Permissions
   - There are two policies 
   - See and compare both policies.
-**Step 8.AWS Management Console>CloudWatch>CloudWatch>CloudWatch Logs>Log groups>first-cb-project
+**Step 8.AWS Management Console>CloudWatch>CloudWatch>CloudWatch Logs>Log groups>first-cb-project**
 - Click on current time Log stream
   - See the log events
   
