@@ -350,7 +350,7 @@ Click on Create launch configuration
 - Minimum - 1
 - Maximum - 1
 
-**Step 9 Select Scaling policies-None 
+**Step 9 Select Scaling policies-None**
 Click on Next
 
 **Step 10. In Add Notifications Click Next**
