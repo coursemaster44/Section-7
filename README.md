@@ -303,6 +303,108 @@ AfterAllowTraffic
 ```
 # End of Lab
 
+# CD-ASG-Lab
+
+**Step1-AWS Console>All Services>EC2>Auto Scaling>Launch Configuration>Create Launch Configuration**
+
+**Step2- Provide following details:**
+- Give name as “lc-cd” 
+- select AMI(Copy it from Ec2 Launch Instance)
+- Select instance type t2.micro 
+- IAM Instance profile - Ec2S3FullAccess
+- In Advanced details>as text>Provide User data:
+```sh
+#!/bin/bash
+$ yum update -y
+$ yum install ruby -y
+$ yum install wget -y
+$ yum install nmap-ncat -y
+$ cd /home/ec2-user
+$ wget https://aws-codedeploy-ap-south-1.s3.ap-south-1.amazonaws.com/latest/install
+$ chmod +x ./install
+$ ./install auto
+$ service codedeploy-agent status
+```
+- keep storage as default
+- Select security group open to All all ip addresses
+- Choose existing key pair 
+
+Click on Create launch configuration
+
+**Step 3. Launch configuration is created**
+
+**Step 4. Select launch configuration “lc-cd ”** 
+- Click Actions>create auto scaling group
+
+**Step 5. Give auto scaling group name - asg-cd**
+- See launch-configuration and click on Next
+
+**Step 6. Select default vpc and subnets all three subnets**
+- Click Next
+
+**Step 7. Select No Load Balancer and Health checks with ELB**
+- Click Next
+
+**Step 8 Keep Group size as following**
+- Desired - 1 
+- Minimum - 1
+- Maximum - 1
+
+**Step 9 Select Scaling policies-None 
+Click on Next
+
+**Step 10. In Add Notifications Click Next**
+
+**Step 11. In Add tags Click Next**
+
+**Step 12. See Review and Click on Create Auto Scaling Group**
+
+**Step 13. AWS Console>Developers Tools>CodeDeploy>Applications>cd-app>Create Deployment Group**
+
+**Step 14.Provide details:**
+- Deployment group name - cd-app-asg
+- Deployment Type - In-Place
+- Environment configuration - Select Auto Scaling group asg-cd
+- Deployment settings - CodeDeployDefault:AllAtOnce
+- Load Balancer - No Load Balancer 
+ 
+Create deployment group
+	
+**Step 15. Click on Create Deployment**
+- keep Deployment group as it is
+- Revision type - My application is stored in Amazon S3
+- Revision location - Paste the S3 URI
+- Revision file type - .zip
+
+Click on Create Deployment
+
+**Step 16.Monitor Deployment LifeCycle Events**
+```sh
+ApplicationStop
+DownloadBundle
+BeforeInstall
+Install
+AfterInstall
+ApplicationStart
+Validateservice
+```
+**Step 17. Copy the Instance Ip address and paste it in browser**
+- See the application running
+
+**Step 18.AWS Console>Developers>CodeDeploy>Applications>cd-app>cd-app-asg>Edit**
+- click on save changes and discard
+
+**Step 19.Ec2>Auto Scaling group>Instance Management**
+- Select codedeploy hook>Actions>Edit
+**Step 20.Ec2>Auto Scaling groups>asg-cd>Edit Group size**
+- Desired - 2
+- Minimum - 2
+- Maximum - 2
+
+Click on Update
+
+**Step 20.
+
 
 
 
