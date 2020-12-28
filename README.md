@@ -184,6 +184,7 @@ COMPLETED       - succeed
 - Click on Permissions
   - There are two policies 
   - See and compare both policies.
+
 **Step 8.AWS Management Console>CloudWatch>CloudWatch>CloudWatch Logs>Log groups>first-cb-project**
 - Click on current time Log stream
   - See the log events
