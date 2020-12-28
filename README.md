@@ -1,7 +1,7 @@
 # Section-7
 # Section-7-Deploying-Sample-App-on-AWS-(With-CI_CD)
 
-# CBBuild-lab
+# CBBuild-lab-1
 
 **Step 1. Goto AWS Management Console>Services>Developers Tools>CodeBuild>first-cd-project>Start new build**
 - Build configuration 
@@ -35,7 +35,7 @@ Click on Cancel & than click on Discard
 
 # End of Lab
 
-# CBBuild-S3-lab
+# CBBuild-S3-lab-2
 
 **Step 1.Zip the Sample-Node_App folder**
 ```
@@ -114,7 +114,7 @@ COMPLETED
 # End of Lab
 
 
-# CBProject-Lab
+# CBProject-Lab-3
 
 **Step 1.Goto AWS Console>Services>S3>Create bucket**
 - Give Bucket name - sample-node-app-amit
@@ -193,7 +193,7 @@ COMPLETED       - succeed
 
 # End of Lab
 
-# CD-ALB-Lab
+# CD-ALB-Lab-4
 
 **Step 1. Go to AWS Console>All Services>EC2>Load Balancing>Target Groups>Create Target Group**
 
@@ -301,6 +301,8 @@ BeforeAllowTraffic
 AllowTraffic
 AfterAllowTraffic
 ```
+# End of Lab
+
 
 
 
