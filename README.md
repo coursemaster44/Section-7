@@ -113,3 +113,83 @@ COMPLETED
 
 # End of Lab
 
+
+# CBProject-Lab
+
+**Step 1.Goto AWS Console>Services>S3>Create bucket**
+- Give Bucket name - sample-node-app-amit
+- Unblock all public access & acknowledge
+**Step 2. Open sample-node-app-amit bucket>Create Folder**
+- Folder name - devbuild
+- Encryption - Disable
+
+Click on Create Folder
+
+**Step 3.Goto AWS Console>Developers Tools>CodeBuild>Build projects>Create build project**
+- Project name - first-cd-project
+- In Source Tab
+  - Source provider - AWS CodeCommit
+  - Repository - Sample-Node_App
+  - Reference Type select “Branch” and Branch as “Master”
+
+- In Environment Tab
+  - Environment image - Managed image
+  - Operating system - Amazon Linux 2
+  - Runtime(s) - Standard
+  - Image - aws/codebuild/amazonlinux2-x86_64-standard:3.0
+  - Image version - Always use the latest image for this version
+  - Service role - New service role
+  
+- In Buildspec section:
+  - Build specifications - select “Use a buildspec file”
+
+- Artifacts Section:
+  - Type - Amazon S3
+  - Bucket name - Sample-Node_App-amit
+  - Path - devbuilds/
+  - Artifacts packaging - Select Zip
+  - Select “Disable artifacts encryption”
+
+- Logs section
+  - CloudWatch - Select Cloudwatch logs
+  - Group name - “cb-project-s3”
+  - Stream name - "cb-project-s3"
+
+Click on Create Build Project
+
+**Step 4.Project is successfully created**
+
+Click on Start build
+
+**Step 5.Provide Build configuration:
+- Project - cb-project-s3
+- Build type - Single build
+- Timeout - 0 Hours 5 Minutes
+
+Click on Start Build
+
+
+**Step 6. Check the status of every step of all phases in phase details-
+```sh
+SUBMITTED - succeed
+QUEUED    - succeed
+PROVISIONING - succeed
+DOWNLOAD_SOURCE - Failed----Due to no Buildspec.yml
+FINALIZING      - succeed
+COMPLETED       - succeed
+```
+
+
+**Step 7. Goto IAM>Roles>codebuild-first-cd-project-service-role
+- Click on Permissions
+  - There are two policies 
+  - See and compare both policies.
+**Step 8.AWS Management Console>CloudWatch>CloudWatch>CloudWatch Logs>Log groups>first-cb-project
+- Click on current time Log stream
+  - See the log events
+  
+- Goto Metrics and validate 
+
+# End of Lab
+
+
