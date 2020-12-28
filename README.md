@@ -193,4 +193,140 @@ COMPLETED       - succeed
 
 # End of Lab
 
+# CD-ALB-Lab
+
+**Step 1. Go to AWS Console>All Services>EC2>Load Balancing>Target Groups>Create Target Group**
+
+**Step 2. Specify group details as following**
+
+- Select Instances in target type
+- Target group name - tg-cd
+- Protocol-HTTP,Port-3000
+- VPC-Default
+- Protocol version
+- Health Checks
+  - Health check protocol- HTTP
+  - Health check path- /
+
+Now Click on Next
+
+**Step 3. Register targets**
+- Select the available instances
+- Ports for the selected instances-3000
+- Click on "Include as pending below"
+
+Now Click on Create target group
+
+**Step 4. "tg-cd" Target Group has been created**
+
+**Step 5. Go to AWS Console>All Services>EC2>Load Balancing>Load Balancers>Create load balancer**
+
+**Step 6. Click on Create in Application Load Balancer**
+
+**Step 7. Configure Load Balancer as following**
+In Basic Configuration
+- Name- alb-cd
+- Scheme- internet-facing
+- Ip address type- ipv4
+- Listeners-Protocol-HTTP,Port-80
+- Availability Zones - VPC-Default - Availability Zones-Select all Zones
+
+Click Next:Configure Security Settings
+
+**Step 8.Configure Security Groups**
+
+- Select security group
+
+Click on Next:Configure Routing
+
+**Step 9.Configure Routing**
+- Target group- Select Existing target group Name - tg-cd
+
+Click on Register Targets
+
+**Step 10.Click on Next:Review>Click on Create>Click on Close**
+
+**Step 11.EC2>Target groups >tg-cd>edit Attributes**
+- change Deregistration delay - 120 seconds
+
+**Step 12.Open Terminal in Visual Studio Code**
+```sh
+$ git status
+$ git commit -a
+$ git commit -m "changed index page's color"
+$ git push
+```
+**Step 13.Developers Tools>CodeBuild>Build projects>first-cd-project**
+- Click on Retry build
+
+**Step 14.Copy the DNS of Load Balancer and paste it in browser**
+- See it is running
+
+**Step 15. Goto S3>sample-node-app-amit>devbuild/>first-cd-project**
+- Click on Object actions>Make Public>make public>Exit
+- Copy S3 URI
+
+**Step 16. Goto AWS Console>Developers Tools>CodeDeploy>Applications>cd-app>cd-app-asg**
+- Click on Edit
+- Provide the details:
+  - Deployment group name - cd-app-asg-alb
+  - Deployment type - In-place
+  - Environment configuration - keep Selected Auto Scaling groups 
+  - Deployment settings - CodeDeployDefault:AllAtOnce
+  - Load Balancer - Enable Load Balancing with Application load Balancer
+    - Choose target group
+	
+Click on Save changes
+
+**Step 17. Click on Create Deployment**
+- keep Deployment group as it is
+- Revision type - My application is stored in Amazon S3
+- Revision location - Paste the S3 URI
+
+Click on Create Deployment
+
+**Step 18.Monitor Life Cycle Events**
+```sh
+BeforeBlockTraffic
+BlockTraffic
+AfterBlockTraffic
+ApplicationStop
+DownloadBundle
+BeforeInstall
+Install
+AfterInstall
+ApplicationStart
+Validateservice
+BeforeAllowTraffic
+AllowTraffic
+AfterAllowTraffic
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
