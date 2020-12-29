@@ -575,7 +575,7 @@ Click on Create deployment
 
 **Step 17.Check the DNS of load balancer and refresh 4 times**
  
-# Enf of lab
+# End of lab
 
 
 
