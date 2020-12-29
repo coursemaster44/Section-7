@@ -756,6 +756,49 @@ Deployment has been done successfully
 
 # End of Lab
 
+# ec2forcd-lab-11
+
+**Step 1.AWS Console>All services>EC2>Launch Instance**
+**Step 2.Select  Amazon Linux2 AMI**
+**Step 3. Choose Instance type t2 micro**
+Click Next:Configure Instance
+
+**Step 4.Leave everything default beside IAM Role and User Data Section**
+- IAM Role - 
+- User Data>As Text:
+```sh
+#!/bin/bash
+$ yum update -y
+$ yum install ruby -y
+$ yum install wget -y
+$ yum install nmap-ncat -y
+$ cd /home/ec2-user
+$ wget https://aws-codedeploy-ap-south-1.s3.ap-south-1.amazonaws.com/latest/install
+$ chmod +x ./install
+$ ./install auto
+$ service codedeploy-agent status
+```
+Click on Next:Add Storage
+
+**Step 5.Keep Default**
+Click on Next:Add Tags
+
+**Step 6.Give key as Name and value as node-server**
+Click on Next:Configure Security Group
+
+**Step 7.Configure Security Group:**
+- Select Security Group with:
+  HTTP:80 Source-0.0.0.0/0
+  TCP:22  Source-0.0.0.0/0
+  Custom TCP Rule:3000 Source-0.0.0.0/0
+
+Click on Review and Launch
+
+
+**Step 8.Click on Launch>Select existing Key pair**
+Click on Launch Instances
+
+**Step 9.
 
 
 
