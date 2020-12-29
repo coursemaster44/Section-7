@@ -577,6 +577,185 @@ Click on Create deployment
  
 # End of lab
 
+# cd-oneEc2-Lab(i)-8
+
+**Step 1.Goto AWS Console>Developers Tools>CodeDeploy>Applications>Create Application**
+- Give Application name:- cd-app
+- Compute platform - Ec2/On-premises
+
+Click on Create application
+
+**Step 2.Deployment groups>Create deployment group**
+- Give the name “ cd-app-dg” in the deployment group name section.
+
+**Step 3.Service Role-Create service role as following**
+- Goto AWS Console>IAM>Roles>Create Role
+  - Select AWS service>CodeDeploy>CodeDeploy
+
+- Click on Next:Permissions>Next:Tags>Next:Review
+
+- Give name - node-app-code-deploy-service-role
+
+- Click on Create role
+
+**Step 4.Goto Step 2 and give service role**
+- select node-app-code-deploy-service-role
+
+**Step 5.In Deployment type choose - In-Place**
+
+**Step 6.Select Amazon Ec2 instances in Environment configuration**
+- In tags select key - Name and value - node-server
+
+**Step 7. Agent configuration with AWS Systems Manager**
+- Never
+
+**Step 8. Deployment settings - CodeDeployDefault:AllAtOnce**
+
+**Step 9.Load Balancer - deselect it**
+
+Click on Create deployment group
+
+**Step 10.Goto IAM>Roles>node-app-code-deploy-service-role>Permissions**
+- See the Policy summary
+
+**Step 11.Now Click on Create Deployment**
+- See deployment settings 
+- Revision type - My application is stored in S3 
+- Revision location 
+   - S3>Buckets>sample-node-app>devbuild/>first-cd-project
+   - To make first-cd-project public>Object actions>Make Public
+   - Copy S3 URI 
+
+**Step 12.Click on Create deployment**
+- Deployment Failed - Due to No Appsec.yml
+
+**Step 13.Open terminal in Visual Studio Code**
+```sh
+$ cp ../appsec.yml .
+$ git status
+$ git add .
+$ git commit -m "adding appspec.yml"
+$ git push
+```
+**Step 14. Goto AWS Console>All services>Code Commit>Repositories>Sample-Node-App**
+- See appsec.yml has been copied
+# End Of lab
+     
+
+
+# cd-oneEc2-Lab(ii)-9
+
+**Step 1.Goto S3>Buckets>sample-node-app-amit>Edit Bucket Versioning**
+Click on Save changes
+
+**Step 2.Developers Tools>CodeBuild>Build projects>first-cd-project**
+- Click on Start Build
+
+**Step 3.In Build Configuration**
+- Timeout - 0 Hours 5 Minutes 
+- See the Source version comment "adding appsec.yml"
+
+Click on Start Build
+
+**Step 4. See Build Status>Phase details**
+```sh
+SUBMITTED - Succeeded
+QUEUED    - Succeeded
+PROVISIONING - Succeeded
+DOWNLOAD_SOURCE - Succeeded
+INSTALL         - Succeeded
+PRE_BUILD       - Succeeded
+BUILD           - Succeeded
+POST_BUILD      - Succeeded
+FINALIZING      - Succeeded
+COMPLETED       - Succeeded
+```
+
+**Step 5. Now Goto S3>sample-node-app-amit>devbuild/>first-cd-project**
+- See both the Versions
+- Make it public Object actions>Make Public
+- Copy S3 URI
+**Step 6.Goto AWS Console>Developers Tools>CodeDeploy>Applications>cd-app**
+- Choose cd-app-sg
+- Click on Create deployment
+
+**Step 7.In Deployment settings**
+- Revision type - My application is stored in S3 
+- Revision location 
+   - s3://sample-node-app/devbuild/first-cd-project
+   - Revision file type - .zip
+
+Click on Create Deployment
+- Deployment failed - due to Script missing
+
+**Step 8.Open terminal in Visual Studio Code**
+```sh
+$ cp -r ../deploy_scripts .
+$ git status
+$ git add .
+$ git commit -m "added deployment scripts"
+$ git push
+```
+
+
+
+# cd-oneEc2-Lab(iii)-10
+**Step 1.Goto AWS Console>All services>Code Commit>Repositories>Sample-Node-App**
+- See deploy_scripts has been copied
+
+**Step 2.Developers Tools>CodeBuild>Build projects>first-cd-project**
+- Click on Retry Build
+
+**Step 3. See Build Status>Phase details**
+```sh
+SUBMITTED - Succeeded
+QUEUED    - Succeeded
+PROVISIONING - Succeeded
+DOWNLOAD_SOURCE - Succeeded
+INSTALL         - Succeeded
+PRE_BUILD       - Succeeded
+BUILD           - Succeeded
+POST_BUILD      - Succeeded
+FINALIZING      - Succeeded
+COMPLETED       - Succeeded
+```
+Build is done
+
+**Step 4.Now Goto S3>sample-node-app-amit>devbuild/>first-cd-project**
+- Now See three Versions
+- Make latest public :Object actions>Make Public
+- Copy S3 URI
+
+**Step 5.Goto AWS Console>Developers Tools>CodeDeploy>Applications>cd-app**
+- Choose cd-app-sg
+- Click on Create deployment
+
+**Step 6.In Deployment settings**
+- Revision type - My application is stored in S3 
+- Revision location 
+   - s3://sample-node-app/devbuild/first-cd-project
+   - Revision file type - .zip
+
+Click on Create Deployment
+
+**Step 7.See the Deployment status>Deployment lifecycle events**
+```sh
+ApplicationStop - Succeeded
+DownloadBundle  - Succeeded
+BeforeInstall   - Succeeded
+Install         - Succeeded
+AfterInstall    - Succeeded
+ApplicationStart - Succeeded
+Validateservice  - Succeeded
+```
+Deployment has been done successfully
+
+**Step 8.Goto Ec2 Dashboard>copy Public Ip>Paste in Browser e.g 13.222.158.20:3000**
+- See the Application Running
+
+# End of Lab
+
+
 
 
 
