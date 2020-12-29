@@ -506,7 +506,76 @@ Traffic shifting process
 # End of lab
 
 
+# CDDeployment-config-lab-7
 
+**Step 1.Ec2>Auto Scaling groups>asg-cd**
+- Edit group size as following-
+  - Desired - 4
+  - Minimum - 4
+  - Maximum - 4
+ 
+**Step 2.Ec2>Auto Scaling groups>asg-cd>Instance management**
+- see new instance are launching 
+
+**Step 3.Ec2>Target groups>tg-cd>targets**
+- see new instance are launching
+
+**Step 4.Open Terminal in Visual Studio**
+- Change color to Green in pages>index.ejs
+- Run git add ,git commit -m "another change in color",git push
+
+**Step 5. Developers Tools>CodeBuild>Build projects>first-cd-project**
+Click on Retry Build
+
+**Step 6.Goto S3>sample-node-app-amit>devbuild/>first-cd-project**
+- Copy S3 URI
+
+**Step 7.Keep monitoring Auto Scaling groups>Instances**
+- Wait for 4 instances to be healthy
+
+**Step 8.See Build is succeeded**
+
+**Step 9.Goto S3>sample-node-app-amit>devbuild/>first-cd-project**
+
+- Click on Object actions>Make Public>make public>Exit
+- Copy S3 URI
+
+**Step 10. Copy ALB Dns in browser and Hit refresh 4 times **
+- See 4 instances are serving the traffic
+
+**Step 11.Goto AWS Console>Developers Tools>CodeDeploy>Applications>cd-app>cd-app-asg-alb**
+
+Click on Create deployment
+- My application is stored in S3
+- Copy Revision location from S3
+- Revision file type - .zip
+
+In Deployment group overrides configuration
+- Select CodeDeploy:HalfAtATime
+
+Click on Create deployment
+
+**Step 12.See in Deployment lifecycle events**
+- 2 are pending
+- 2 are in progress
+
+**Step 13. Ec2>Target groups**
+- 2 are healthy
+- 2 are deregistering
+
+**Step 14.Check the DNS of load balancer and refresh**
+- it is serving only 2 instances
+
+**Step 15.See in Deployment lifecycle events**
+- 2 are succeeded
+- 2 are in progress
+
+**Step 16. Ec2>Target groups**
+- All 4 are healthy
+
+**Step 17.Check the DNS of load balancer and refresh 4 times**
+ 
+# Enf of lab
 
 
 
