@@ -453,7 +453,7 @@ Click on Create deployment
 - See Deployment lifecycle events
 - 2 Showing original and 2 replacement
 
-**Step 8.Click on Events in 1 Replacement Instance
+**Step 8.Click on Events in 1 Replacement Instance**
 
 ```sh
 BeforeBlockTraffic
