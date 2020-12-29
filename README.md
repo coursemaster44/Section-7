@@ -495,7 +495,7 @@ Following 3 hooks will be faced during deregistration
 
 
 **Step 15. Check the DNS of load balancer and refresh**
-- Only Green available**
+- Only Green color instances are running
 
 **Step 16. See the deployment status**
 Traffic shifting process
