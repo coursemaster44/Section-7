@@ -540,7 +540,7 @@ Click on Retry Build
 - Click on Object actions>Make Public>make public>Exit
 - Copy S3 URI
 
-**Step 10. Copy ALB Dns in browser and Hit refresh 4 times **
+**Step 10. Copy ALB Dns in browser and Hit refresh 4 times**
 - See 4 instances are serving the traffic
 
 **Step 11.Goto AWS Console>Developers Tools>CodeDeploy>Applications>cd-app>cd-app-asg-alb**
