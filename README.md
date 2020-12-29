@@ -414,6 +414,95 @@ Click on Update
 
 # End of lab
 
+# cd-bg-lab-6
+**Step 1.AWS Console>Developers>CodeDeploy>Applications>cd-app**
+- click on deployment group - cd-app-asg-alb>edit
+  - In Deployment type select Blue/Green
+  - keep remainingas it is
+  
+Click on Save changes
+
+**Step 2. Open Terminal in Visual Studio**
+- Change color to Green in pages>index.ejs
+- Run git add ,git commit -m "changed index color to green",git push
+
+**Step 2.AWS Management Console>Services>Developers Tools>CodeBuild>Build Projects>first-cd-project>Start Build**
+- change Timeout in build configurationto 0 hours 5 minutes
+- In Source Tab - source version shows "changed index color to green"
+
+Click on Start Build
+
+**Step 3.Goto S3>sample-node-app-amit>devbuild/>first-cd-project**
+- Click on Object actions>Make Public>make public>Exit
+- Copy S3 URI
+
+**Step 4.Goto AWS Console>Developers Tools>CodeDeploy>Applications>cd-app>cd-app-asg-alb**
+- Click on Create deployment
+- Copy Revision location
+- Revision file type - .zip
+
+Click on Create deployment
+
+**Step 5.Ec2>Auto Scaling groups>Instance management>Instances**
+- See the behaviour
+
+**Step 6.EC2>Load Balancer>target groups>tg-cd**
+- See the behaviour of 2 new instances and 2 old instances
+
+**Step 7.CodeDeploy>Applications>cd-app>cd-app-asg-alb**
+- See Deployment lifecycle events
+- 2 Showing original and 2 replacement
+
+**Step 8.Click on Events in 1 Replacement Instance
+
+```sh
+BeforeBlockTraffic
+BlockTraffic
+AfterBlockTraffic
+ApplicationStop
+DownloadBundle
+BeforeInstall
+Install
+AfterInstall
+ApplicationStart
+Validateservice
+BeforeAllowTraffic
+AllowTraffic
+AfterAllowTraffic
+```
+**Step 9. Deployment complete and now 4 instances are available**
+- 2 new
+- 2 old
+**Step 10. Check the DNS of load balancer and refresh it 2 times**
+- You can see blue and green color as 2 original and 2 replacement are running now
+
+**Step 11.Now events section in Oiginal instance**
+Following 3 hooks will be faced during deregistration
+- BeforeBlockTraffic
+- BlockTraffic
+- AfterBlockTraffic
+
+**Step 12. Check the DNS of load balancer and refresh it**
+- Now only 2 instances are serving the traffic
+- You can only see green as original blue are terminated
+
+**Step 13. See the deployment status**
+- Original instances termination is in process
+
+**Step 14.AWS Console>Developers Tools>CodeDeploy>Applications>cd-app>cd-app-asg-alb** 
+- Edit deployment group to see the auto scaling group
+- "asg-cd" is replaced by new Auto scaling group "CodeDeploy-xxx" automatically
+
+
+**Step 15. Check the DNS of load balancer and refresh**
+- Only Green available**
+
+**Step 16. See the deployment status**
+Traffic shifting process
+- Original - 0
+- Replacement - 2
+
+# End of lab
 
 
 
