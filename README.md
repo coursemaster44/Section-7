@@ -473,6 +473,7 @@ AfterAllowTraffic
 **Step 9. Deployment complete and now 4 instances are available**
 - 2 new
 - 2 old
+
 **Step 10. Check the DNS of load balancer and refresh it 2 times**
 - You can see blue and green color as 2 original and 2 replacement are running now
 
