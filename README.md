@@ -788,9 +788,9 @@ Click on Next:Configure Security Group
 
 **Step 7.Configure Security Group:**
 - Select Security Group with:
-  HTTP:80 Source-0.0.0.0/0
-  TCP:22  Source-0.0.0.0/0
-  Custom TCP Rule:3000 Source-0.0.0.0/0
+  - HTTP:80 Source-0.0.0.0/0
+  - TCP:22  Source-0.0.0.0/0
+  - Custom TCP Rule:3000 Source-0.0.0.0/0
 
 Click on Review and Launch
 
@@ -798,7 +798,13 @@ Click on Review and Launch
 **Step 8.Click on Launch>Select existing Key pair**
 Click on Launch Instances
 
-**Step 9.
+**Step 9.Goto EC2 Dashboard**
+- Select node-server>Actions>Connect
+```
+$ sudo service codedeploy-agent status
+#You Will see this message "The AWS Codedeploy agent is running as PID xxxx"
+```
+# End of lab
 
 
 
