@@ -646,7 +646,7 @@ $ git push
 # cd-oneEc2-Lab(ii)-9
 
 **Step 1.Goto S3>Buckets>sample-node-app-amit>Edit Bucket Versioning**
-Click on Save changes
+- Click on Save changes
 
 **Step 2.Developers Tools>CodeBuild>Build projects>first-cd-project**
 - Click on Start Build
@@ -675,6 +675,7 @@ COMPLETED       - Succeeded
 - See both the Versions
 - Make it public Object actions>Make Public
 - Copy S3 URI
+
 **Step 6.Goto AWS Console>Developers Tools>CodeDeploy>Applications>cd-app**
 - Choose cd-app-sg
 - Click on Create deployment
