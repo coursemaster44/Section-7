@@ -303,7 +303,7 @@ AfterAllowTraffic
 ```
 # End of Lab
 
-# CD-ASG-Lab
+# CD-ASG-Lab-5
 
 **Step1-AWS Console>All Services>EC2>Auto Scaling>Launch Configuration>Create Launch Configuration**
 
@@ -359,18 +359,20 @@ Click on Next
 
 **Step 12. See Review and Click on Create Auto Scaling Group**
 
-**Step 13. AWS Console>Developers Tools>CodeDeploy>Applications>cd-app>Create Deployment Group**
+**Step 13. Goto EC2 dashboard and see the newly created instance by ASG**
 
-**Step 14.Provide details:**
+**Step 14. AWS Console>Developers Tools>CodeDeploy>Applications>cd-app>Create Deployment Group**
+
+**Step 15.Provide details:**
 - Deployment group name - cd-app-asg
 - Deployment Type - In-Place
 - Environment configuration - Select Auto Scaling group asg-cd
 - Deployment settings - CodeDeployDefault:AllAtOnce
 - Load Balancer - No Load Balancer 
  
-Create deployment group
+Click Create deployment group
 	
-**Step 15. Click on Create Deployment**
+**Step 16. Click on Create Deployment**
 - keep Deployment group as it is
 - Revision type - My application is stored in Amazon S3
 - Revision location - Paste the S3 URI
@@ -378,7 +380,7 @@ Create deployment group
 
 Click on Create Deployment
 
-**Step 16.Monitor Deployment LifeCycle Events**
+**Step 17.Monitor Deployment LifeCycle Events**
 ```sh
 ApplicationStop
 DownloadBundle
@@ -388,14 +390,15 @@ AfterInstall
 ApplicationStart
 Validateservice
 ```
-**Step 17. Copy the Instance Ip address and paste it in browser**
+**Step 18. Copy the Instance Ip address and paste it in browser**
 - See the application running
 
-**Step 18.AWS Console>Developers>CodeDeploy>Applications>cd-app>cd-app-asg>Edit**
-- click on save changes and discard
+**Step 19.AWS Console>Developers>CodeDeploy>Applications>cd-app>cd-app-asg>Edit**
+- click on cancel and discard
 
-**Step 19.Ec2>Auto Scaling group>Instance Management**
-- Select codedeploy hook>Actions>Edit
+**Step 20.Ec2>Auto Scaling group>Instance Management**
+- Select codedeploy hook>Actions>Edit lifecycle hook
+
 **Step 20.Ec2>Auto Scaling groups>asg-cd>Edit Group size**
 - Desired - 2
 - Minimum - 2
@@ -403,11 +406,13 @@ Validateservice
 
 Click on Update
 
-**Step 20.
+**Step 21.Ec2>Auto Scaling Group>asg-cd>Instances**
+- See the lifecycle behaviour pending>pending-wait>pending-wait:proceed>INservice
 
+**Step 22.Click the new Instance and copy & paste the Public IP address in browser to see it running**
+- e.g.-13.222.125.52:3000
 
-
-
+# End of lab
 
 
 
