@@ -759,9 +759,11 @@ Deployment has been done successfully
 # ec2forcd-lab-11
 
 **Step 1.AWS Console>All services>EC2>Launch Instance**
+
 **Step 2.Select  Amazon Linux2 AMI**
+
 **Step 3. Choose Instance type t2 micro**
-Click Next:Configure Instance
+- Click Next:Configure Instance
 
 **Step 4.Leave everything default beside IAM Role and User Data Section**
 - IAM Role - 
@@ -778,13 +780,13 @@ $ chmod +x ./install
 $ ./install auto
 $ service codedeploy-agent status
 ```
-Click on Next:Add Storage
+- Click on Next:Add Storage
 
 **Step 5.Keep Default**
-Click on Next:Add Tags
+- Click on Next:Add Tags
 
 **Step 6.Give key as Name and value as node-server**
-Click on Next:Configure Security Group
+- Click on Next:Configure Security Group
 
 **Step 7.Configure Security Group:**
 - Select Security Group with:
@@ -792,11 +794,11 @@ Click on Next:Configure Security Group
   - TCP:22  Source-0.0.0.0/0
   - Custom TCP Rule:3000 Source-0.0.0.0/0
 
-Click on Review and Launch
+- Now Click on Review and Launch
 
 
 **Step 8.Click on Launch>Select existing Key pair**
-Click on Launch Instances
+- Now Click on Launch Instances
 
 **Step 9.Goto EC2 Dashboard**
 - Select node-server>Actions>Connect
