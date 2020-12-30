@@ -808,7 +808,29 @@ $ sudo service codedeploy-agent status
 ```
 # End of lab
 
+# check-app-deployment-on-ec2-lab
+**Step 1.Open Appsec.yml in Visual Studio code**
 
+**Step 2.Goto Ec2 dashboard>node-server>Actios>Connect>connect**
+
+**Step 3.Goto https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-hooks.html**
+
+**Step 4.Goto Connected instance node-server**
+- Run the following commands
+```sh
+$ cd /opt/codedeploy-agent/deployment-root
+$ ls
+$ cd deployment-instructions
+$ ls
+$ cat xxxxxxxxxxx_lastsuccessful_install
+$ cd /opt/codedeploy-agent/deployment-root/xxxxx-xxxx-
+$ ls
+$ cd deployment-archive/
+$ ls
+$ cd /home/ec2-user
+$ ls
+```
+# End of lab
 
 
 
