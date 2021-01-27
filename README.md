@@ -458,15 +458,18 @@ Click on Save changes
 ```sh
 $ git status
 $ git add . 
-$ git commit -m "changed index color to green",git push
-
+$ git commit -m "changed index color to green"
+$ git push
+```
 **Step 2.AWS Management Console>Services>Developers Tools>CodeBuild>Build Projects>first-cd-project>Start Build**
-- change Timeout in build configurationto 0 hours 5 minutes
+Provide the following details:
+- Change Timeout in build configurationto 0 hours 5 minutes
 - In Source Tab - source version shows "changed index color to green"
 
 Click on Start Build
 
-**Step 3.Goto S3>sample-node-app-amit>devbuild/>first-cd-project**
+**Step 3.After Build completion goto S3>sample-node-app-amit>devbuild/>first-cd-project>versions**
+- Check the latest version
 - Click on Object actions>Make Public>make public>Exit
 - Copy S3 URI
 
@@ -478,13 +481,13 @@ Click on Start Build
 Click on Create deployment
 
 **Step 5.Ec2>Auto Scaling groups>Instance management>Instances**
-- See the behaviour
+- See the behaviour of instances
 
 **Step 6.EC2>Load Balancer>target groups>tg-cd**
-- See the behaviour of 2 new instances and 2 old instances
+- See the behaviour of 2 newer instances and 2 older instances(will be deleted)
 
 **Step 7.CodeDeploy>Applications>cd-app>cd-app-asg-alb**
-- See Deployment lifecycle events
+- See status in Deployment lifecycle events
 - 2 Showing original and 2 replacement
 
 **Step 8.Click on Events in 1 Replacement Instance**
@@ -505,8 +508,8 @@ AllowTraffic
 AfterAllowTraffic
 ```
 **Step 9. Deployment complete and now 4 instances are available**
-- 2 new
-- 2 old
+- 2 newer
+- 2 older
 
 **Step 10. Check the DNS of load balancer and refresh it 2 times**
 - You can see blue and green color as 2 original and 2 replacement are running now
@@ -526,7 +529,7 @@ Following 3 hooks will be faced during deregistration
 
 **Step 14.AWS Console>Developers Tools>CodeDeploy>Applications>cd-app>cd-app-asg-alb** 
 - Edit deployment group to see the auto scaling group
-- "asg-cd" is replaced by new Auto scaling group "CodeDeploy-xxx" automatically
+- See "asg-cd" is replaced by new Auto scaling group "CodeDeploy-xxx" automatically
 
 
 **Step 15. Check the DNS of load balancer and refresh**
