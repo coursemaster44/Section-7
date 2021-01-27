@@ -3,34 +3,43 @@
 
 # CBBuild-lab-1
 
-**Step 1. Goto AWS Management Console>Services>Developers Tools>CodeBuild>first-cd-project>Start new build**
-- Build configuration 
+**Step 1. Goto AWS Management Console>Services>Developers Tools>CodeBuild>first-cd-project>Start build**
+Provide the following details:
+- Build configuration
+  - built type - single build
   - Timeout - 0 Hours 5 Minutes
 Click on Start Build
 
-**Step 2. Open Terminal in Visual Studio Code**
+**Step 2.Goto Phase details to see the ongoing build**
+- Download source - build fails due to version
+
+To remove this error version need to changed
+
+**Step 3. Now Open Terminal in Visual Studio Code**
 ```sh
 $ git status 
 $ git add .
 $ git commit -m "changed node version to 12"
 $ git push
 ```
-**Step 3. Goto AWS Management Console>Services>Developers Tools>CodeBuild>first-cd-project>Start Build**
+**Step 4. Goto AWS Management Console>Services>Developers Tools>CodeBuild>first-cd-project>Start Build**
+Provide the following details:
 - Build configuration 
   - Timeout - 0 Hours 5 Minutes
 - Source version shows node version to 12
 - Click on Start Build
 
-**Step 4. See Build Status>Phase details**
+**Step 5. See Build Status>Phase details**
+- Monitor the build phases
 
-**Step 5. Now Goto S3>sample-node-app-amit>devbuild/>first-cd-project**
+**Step 6. Now Goto S3>sample-node-app-amit>devbuild/>first-cd-project**
 
-**Step 6.Goto Developers Tools>CodeBuild>Build projects>first-cd-project>Edit>Artifacts**
-- See semantic versioning
+**Step 7. Goto Developers Tools>CodeBuild>Build projects>first-cd-project>Edit>Artifacts**
+- See that semantic versioning is checked
 Click on Cancel & than click on Discard
 
-**Step 7.Goto AWS Management Console>CloudWatch>CloudWatch>CloudWatch Logs>Log groups>first-cd-project**
-- Click on current time logstream
+**Step 8. Goto AWS Management Console>CloudWatch>CloudWatch>CloudWatch Logs>Log groups>first-cd-project**
+- Click on latest time logstream
 - see the log events
 
 # End of Lab
