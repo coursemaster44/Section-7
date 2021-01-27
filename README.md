@@ -263,11 +263,12 @@ Click on Register Targets
 **Step 10.Click on Next:Review>Click on Create>Click on Close**
 
 **Step 11.EC2>Target groups >tg-cd>edit Attributes**
-- change Deregistration delay - 120 seconds
+- change Deregistration delay - 60 seconds
 
 **Step 12.Open Terminal in Visual Studio Code**
 ```sh
 $ git status
+$ git add .
 $ git commit -a
 $ git commit -m "changed index page's color"
 $ git push
@@ -276,15 +277,15 @@ $ git push
 - Click on Retry build
 
 **Step 14.Copy the DNS of Load Balancer and paste it in browser**
-- See it is running
+- See that it ALB is sending traffic
 
-**Step 15. Goto S3>sample-node-app-amit>devbuild/>first-cd-project**
+**Step 15. After Build completion goto S3>sample-node-app-amit>devbuild/>first-cd-project**
 - Click on Object actions>Make Public>make public>Exit
 - Copy S3 URI
 
 **Step 16. Goto AWS Console>Developers Tools>CodeDeploy>Applications>cd-app>cd-app-asg**
 - Click on Edit
-- Provide the details:
+- Provide the following details:
   - Deployment group name - cd-app-asg-alb
   - Deployment type - In-place
   - Environment configuration - keep Selected Auto Scaling groups 
@@ -295,7 +296,7 @@ $ git push
 Click on Save changes
 
 **Step 17. Click on Create Deployment**
-- keep Deployment group as it is
+- No change in Deployment group 
 - Revision type - My application is stored in Amazon S3
 - Revision location - Paste the S3 URI
 
@@ -317,6 +318,9 @@ BeforeAllowTraffic
 AllowTraffic
 AfterAllowTraffic
 ```
+**Step 18.Open DNS of load balancer in Browser**
+- See that it is serving the traffic
+
 # End of Lab
 
 # CD-ASG-Lab-5
