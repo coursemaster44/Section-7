@@ -442,16 +442,23 @@ Click on Update
 # End of lab
 
 # cd-bg-lab-6
-**Step 1.AWS Console>Developers>CodeDeploy>Applications>cd-app**
-- click on deployment group - cd-app-asg-alb>edit
-  - In Deployment type select Blue/Green
-  - keep remainingas it is
+**Step 1.AWS Console>Developers>CodeDeploy>Applications>cd-app>cd-app-asg-alb>cd-app-asg-alb>edit**
+Provide the following details:
+  - Deployment type - Blue/Green
+  - Environment configuration - Select Automatically copy Amazon EC2 Auto Scaling group
+  - In Deployment settings
+    - Terminate the original instances in the deployment group running
+      - 0 Days 0 Hours 0 Minutes
   
 Click on Save changes
 
-**Step 2. Open Terminal in Visual Studio**
+**Step 2. Open Terminal in Visual Studio Code**
 - Change color to Green in pages>index.ejs
-- Run git add ,git commit -m "changed index color to green",git push
+- Run the following commands
+```sh
+$ git status
+$ git add . 
+$ git commit -m "changed index color to green",git push
 
 **Step 2.AWS Management Console>Services>Developers Tools>CodeBuild>Build Projects>first-cd-project>Start Build**
 - change Timeout in build configurationto 0 hours 5 minutes
