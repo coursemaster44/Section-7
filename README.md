@@ -545,21 +545,27 @@ Traffic shifting process
 
 # CDDeployment-config-lab-7
 
-**Step 1.Ec2>Auto Scaling groups>asg-cd**
+**Step 1.Aws Console>Ec2>Auto Scaling groups>asg-cd**
 - Edit group size as following-
   - Desired - 4
   - Minimum - 4
   - Maximum - 4
  
 **Step 2.Ec2>Auto Scaling groups>asg-cd>Instance management**
-- see new instance are launching 
+- See new instances are launching 
 
 **Step 3.Ec2>Target groups>tg-cd>targets**
-- see new instance are launching
+- See new instances are launching
 
 **Step 4.Open Terminal in Visual Studio**
 - Change color to Green in pages>index.ejs
-- Run git add ,git commit -m "another change in color",git push
+- Run the following commands
+```sh
+$ git status
+$ git add . 
+$ git commit -m "another change in color of index"
+$ git push
+```
 
 **Step 5. Developers Tools>CodeBuild>Build projects>first-cd-project**
 Click on Retry Build
@@ -577,8 +583,8 @@ Click on Retry Build
 - Click on Object actions>Make Public>make public>Exit
 - Copy S3 URI
 
-**Step 10. Copy ALB Dns in browser and Hit refresh 4 times**
-- See 4 instances are serving the traffic
+**Step 10. Copy ALB DNS in the browser and Hit refresh 4 times**
+- See that 4 instances are serving the traffic now
 
 **Step 11.Goto AWS Console>Developers Tools>CodeDeploy>Applications>cd-app>cd-app-asg-alb**
 
@@ -601,7 +607,7 @@ Click on Create deployment
 - 2 are deregistering
 
 **Step 14.Check the DNS of load balancer and refresh**
-- it is serving only 2 instances
+- It is serving only 2 instances
 
 **Step 15.See in Deployment lifecycle events**
 - 2 are succeeded
