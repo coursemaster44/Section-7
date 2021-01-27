@@ -130,8 +130,10 @@ COMPLETED
 # CBProject-Lab-3
 
 **Step 1.Goto AWS Console>Services>S3>Create bucket**
+Provide the following details:
 - Give Bucket name - sample-node-app-amit
 - Unblock all public access & acknowledge
+
 **Step 2. Open sample-node-app-amit bucket>Create Folder**
 - Folder name - devbuild
 - Encryption - Disable
@@ -139,6 +141,7 @@ COMPLETED
 Click on Create Folder
 
 **Step 3.Goto AWS Console>Developers Tools>CodeBuild>Build projects>Create build project**
+Provide the following details:
 - Project name - first-cd-project
 - In Source Tab
   - Source provider - AWS CodeCommit
@@ -182,27 +185,27 @@ Click on Start build
 Click on Start Build
 
 
-**Step 6. Check the status of every step of all phases in phase details-**
+**Step 6. Check the status of all phases in phase details-**
 ```sh
-SUBMITTED - succeed
-QUEUED    - succeed
-PROVISIONING - succeed
-DOWNLOAD_SOURCE - Failed----Due to no Buildspec.yml
-FINALIZING      - succeed
-COMPLETED       - succeed
+SUBMITTED - Succeeded
+QUEUED    - Succeeded
+PROVISIONING - Succeeded
+DOWNLOAD_SOURCE - Failed      YAML_FILE_ERROR:YAML file does not exist
+FINALIZING      - Succeeded
+COMPLETED       - Succeeded
 ```
 
 
 **Step 7. Goto IAM>Roles>codebuild-first-cd-project-service-role**
 - Click on Permissions
   - There are two policies 
-  - See and compare both policies.
+  - See and compare both the policies
 
-**Step 8.AWS Management Console>CloudWatch>CloudWatch>CloudWatch Logs>Log groups>first-cb-project**
+**Step 8. AWS Management Console>CloudWatch>CloudWatch>CloudWatch Logs>Log groups>first-cb-project**
 - Click on current time Log stream
   - See the log events
   
-- Goto Metrics and validate 
+**Step 9. AWS Management Console>CloudWatch> Goto Metrics and validate metrices**
 
 # End of Lab
 
