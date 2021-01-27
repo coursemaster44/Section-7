@@ -46,7 +46,9 @@ Click on Cancel & than click on Discard
 
 # CBBuild-S3-lab-2
 
-**Step 1.Zip the Sample-Node_App folder**
+**Step 1.Open Terminal in Visual Studio Code**
+- Zip the Sample-Node_App folder
+
 ```
 $ zip -r Sample-Node_App.zip . -x "_MACOSX"**
 ```
@@ -55,9 +57,10 @@ $ zip -r Sample-Node_App.zip . -x "_MACOSX"**
 - Click on Upload
 
 **Step 3.Click on Sample-Node_App.zip**
-- Copy S3 URI
+- In Details Copy S3 URI
 
 **Step 4. Goto AWS Management Console>Services>Developers Tools>CodeBuild>Build Projects>Create Build Project**
+Provide the following details:
 - Provide Project Configuration
   - project name - cb-project-s3
 
@@ -101,7 +104,7 @@ Click on Create Build Project
 
 Click on Start Build
  
-**Step 7. Check the status of every step of all phases in phase details-**
+**Step 7. Check the status of all phases in phase details-**
 ```sh
 SUBMITTED
 QUEUED
@@ -115,10 +118,11 @@ FINALIZING
 COMPLETED
 ```
 **Step 8.Goto AWS Management Console>CloudWatch>CloudWatch>CloudWatch Logs>Log groups>cb-project-s3**
-- Click on current time Log stream
+- Click on latest Log stream
 - See the log events
 
 **Step 9. Now Goto S3>sample-node-app-amit>devbuild/>cb-project-s3**
+- See the details
 
 # End of Lab
 
