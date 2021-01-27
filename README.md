@@ -346,7 +346,7 @@ $ ./install auto
 $ service codedeploy-agent status
 ```
 - keep storage as default
-- Select security group open to All all ip addresses
+- Select security group with All port open as of now 
 - Choose existing key pair 
 
 Click on Create launch configuration
@@ -359,11 +359,15 @@ Click on Create launch configuration
 **Step 5. Give auto scaling group name - asg-cd**
 - See launch-configuration and click on Next
 
-**Step 6. Select default vpc and subnets all three subnets**
+**Step 6. Select default vpc and all three subnets**
 - Click Next
 
-**Step 7. Select No Load Balancer and Health checks with ELB**
-- Click Next
+**Step 7.Configure advanced options** 
+- Select No Load Balancer 
+- Select Health checks with ELB
+  - Health check grace period - 180 sec
+
+Click Next
 
 **Step 8 Keep Group size as following**
 - Desired - 1 
@@ -385,10 +389,11 @@ Click on Next
 
 **Step 15.Provide details:**
 - Deployment group name - cd-app-asg
+- Service role - use existing 
 - Deployment Type - In-Place
 - Environment configuration - Select Auto Scaling group asg-cd
 - Deployment settings - CodeDeployDefault:AllAtOnce
-- Load Balancer - No Load Balancer 
+- Load Balancer - Deselect the Load Balancer 
  
 Click Create deployment group
 	
@@ -411,15 +416,17 @@ ApplicationStart
 Validateservice
 ```
 **Step 18. Copy the Instance Ip address and paste it in browser**
-- See the application running
+- See that the application is running
 
 **Step 19.AWS Console>Developers>CodeDeploy>Applications>cd-app>cd-app-asg>Edit**
-- click on cancel and discard
+- After validating click on cancel and discard
 
-**Step 20.Ec2>Auto Scaling group>Instance Management**
+**Step 20.Ec2>Auto Scaling group>Instance Management>Lifecycle hooks**
 - Select codedeploy hook>Actions>Edit lifecycle hook
+- 
 
 **Step 20.Ec2>Auto Scaling groups>asg-cd>Edit Group size**
+Put the following value:
 - Desired - 2
 - Minimum - 2
 - Maximum - 2
@@ -427,7 +434,7 @@ Validateservice
 Click on Update
 
 **Step 21.Ec2>Auto Scaling Group>asg-cd>Instances**
-- See the lifecycle behaviour pending>pending-wait>pending-wait:proceed>INservice
+- See the lifecycle behaviour pending>pending-wait>pending-wait:proceed>Inservice
 
 **Step 22.Click the new Instance and copy & paste the Public IP address in browser to see it running**
 - e.g.-13.222.125.52:3000
