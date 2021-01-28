@@ -697,6 +697,7 @@ $ git push
 # cd-oneEc2-Lab(ii)-9
 
 **Step 1.Goto S3>Buckets>sample-node-app-amit>Edit Bucket Versioning**
+- Select Enable 
 - Click on Save changes
 
 **Step 2.Developers Tools>CodeBuild>Build projects>first-cd-project**
@@ -708,11 +709,11 @@ $ git push
 
 Click on Start Build
 
-**Step 4. See Build Status>Phase details**
+**Step 4. See Build Status in the following Phase details**
 ```sh
-SUBMITTED - Succeeded
-QUEUED    - Succeeded
-PROVISIONING - Succeeded
+SUBMITTED       - Succeeded
+QUEUED          - Succeeded
+PROVISIONING    - Succeeded
 DOWNLOAD_SOURCE - Succeeded
 INSTALL         - Succeeded
 PRE_BUILD       - Succeeded
@@ -724,7 +725,7 @@ COMPLETED       - Succeeded
 
 **Step 5. Now Goto S3>sample-node-app-amit>devbuild/>first-cd-project**
 - See both the Versions
-- Make it public Object actions>Make Public
+- To Make it public goto Object actions>Make Public
 - Copy S3 URI
 
 **Step 6.Goto AWS Console>Developers Tools>CodeDeploy>Applications>cd-app**
@@ -738,7 +739,7 @@ COMPLETED       - Succeeded
    - Revision file type - .zip
 
 Click on Create Deployment
-- Deployment failed - due to Script missing
+- Deployment failed - Error code ScriptMissing
 
 **Step 8.Open terminal in Visual Studio Code**
 ```sh
@@ -753,16 +754,16 @@ $ git push
 
 # cd-oneEc2-Lab(iii)-10
 **Step 1.Goto AWS Console>All services>Code Commit>Repositories>Sample-Node-App**
-- See deploy_scripts has been copied
+- See deploy_scripts have been copied
 
 **Step 2.Developers Tools>CodeBuild>Build projects>first-cd-project**
 - Click on Retry Build
 
-**Step 3. See Build Status>Phase details**
+**Step 3. See Build Status in the following Phase details**
 ```sh
-SUBMITTED - Succeeded
-QUEUED    - Succeeded
-PROVISIONING - Succeeded
+SUBMITTED       - Succeeded
+QUEUED          - Succeeded
+PROVISIONING    - Succeeded
 DOWNLOAD_SOURCE - Succeeded
 INSTALL         - Succeeded
 PRE_BUILD       - Succeeded
@@ -774,7 +775,7 @@ COMPLETED       - Succeeded
 Build is done
 
 **Step 4.Now Goto S3>sample-node-app-amit>devbuild/>first-cd-project**
-- Now See three Versions
+- Now See there are 3 Versions
 - Make latest public :Object actions>Make Public
 - Copy S3 URI
 
