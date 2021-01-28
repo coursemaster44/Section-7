@@ -185,7 +185,7 @@ Click on Start build
 Click on Start Build
 
 
-**Step 6. Check the status of all phases in phase details-**
+**Step 6. Check the status of all the following phases in phase details-**
 ```sh
 SUBMITTED - Succeeded
 QUEUED    - Succeeded
@@ -423,9 +423,8 @@ Validateservice
 
 **Step 20.Ec2>Auto Scaling group>Instance Management>Lifecycle hooks**
 - Select codedeploy hook>Actions>Edit lifecycle hook
-- 
 
-**Step 20.Ec2>Auto Scaling groups>asg-cd>Edit Group size**
+**Step 21.Ec2>Auto Scaling groups>asg-cd>Edit Group size**
 Put the following value:
 - Desired - 2
 - Minimum - 2
@@ -433,10 +432,10 @@ Put the following value:
 
 Click on Update
 
-**Step 21.Ec2>Auto Scaling Group>asg-cd>Instances**
+**Step 22.Ec2>Auto Scaling Group>asg-cd>Instances**
 - See the lifecycle behaviour pending>pending-wait>pending-wait:proceed>Inservice
 
-**Step 22.Click the new Instance and copy & paste the Public IP address in browser to see it running**
+**Step 23.Click the new Instance and copy & paste the Public IP address in browser to see it running**
 - e.g.-13.222.125.52:3000
 
 # End of lab
@@ -490,7 +489,7 @@ Click on Create deployment
 - See status in Deployment lifecycle events
 - 2 Showing original and 2 replacement
 
-**Step 8.Click on Events in 1 Replacement Instance**
+**Step 8.Click to see Events of 1 Replacement Instance**
 
 ```sh
 BeforeBlockTraffic
@@ -623,13 +622,14 @@ Click on Create deployment
 # cd-oneEc2-Lab(i)-8
 
 **Step 1.Goto AWS Console>Developers Tools>CodeDeploy>Applications>Create Application**
+In Application configuration give the following details:
 - Give Application name:- cd-app
 - Compute platform - Ec2/On-premises
 
 Click on Create application
 
-**Step 2.Deployment groups>Create deployment group**
-- Give the name “ cd-app-dg” in the deployment group name section.
+**Step 2.Goto Deployment groups>Create deployment group**
+- Give the name “ cd-app-dg” in the deployment group name section
 
 **Step 3.Service Role-Create service role as following**
 - Goto AWS Console>IAM>Roles>Create Role
@@ -642,12 +642,15 @@ Click on Create application
 - Click on Create role
 
 **Step 4.Goto Step 2 and give service role**
-- select node-app-code-deploy-service-role
+- Refresh and Select node-app-code-deploy-service-role
 
 **Step 5.In Deployment type choose - In-Place**
 
 **Step 6.Select Amazon Ec2 instances in Environment configuration**
-- In tags select key - Name and value - node-server
+- In tags select as following
+  - key - Name 
+  - value - node-server
+See the 1 Matching instance for above tags
 
 **Step 7. Agent configuration with AWS Systems Manager**
 - Never
@@ -666,13 +669,15 @@ Click on Create deployment group
 - Revision type - My application is stored in S3 
 - Revision location 
    - S3>Buckets>sample-node-app>devbuild/>first-cd-project
-   - To make first-cd-project public>Object actions>Make Public
+   - To make first-cd-project public 
+     - goto Object actions>Make Public
    - Copy S3 URI 
 
 **Step 12.Click on Create deployment**
-- Deployment Failed - Due to No Appsec.yml
+- Deployment Failed - Due to No Appsec.yml file
 
 **Step 13.Open terminal in Visual Studio Code**
+Run the following commands:
 ```sh
 $ cp ../appsec.yml .
 $ git status
@@ -681,7 +686,8 @@ $ git commit -m "adding appspec.yml"
 $ git push
 ```
 **Step 14. Goto AWS Console>All services>Code Commit>Repositories>Sample-Node-App**
-- See appsec.yml has been copied
+- See that the appsec.yml file has been copied
+
 # End Of lab
      
 
