@@ -622,6 +622,7 @@ Click on Create deployment
 # cd-oneEc2-Lab(i)-8
 
 **Step 1.Goto AWS Console>Developers Tools>CodeDeploy>Applications>Create Application**
+
 In Application configuration give the following details:
 - Give Application name:- cd-app
 - Compute platform - Ec2/On-premises
@@ -650,6 +651,7 @@ Click on Create application
 - In tags select as following
   - key - Name 
   - value - node-server
+
 See the 1 Matching instance for above tags
 
 **Step 7. Agent configuration with AWS Systems Manager**
