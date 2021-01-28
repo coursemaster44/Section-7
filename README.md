@@ -866,7 +866,7 @@ $ sudo service codedeploy-agent status
 # End of lab
 
 # check-app-deployment-on-ec2-lab
-**Step 1.Open Appsec.yml in Visual Studio code**
+**Step 1.Open Appsec.yml file in Visual Studio code**
 
 **Step 2.Goto Ec2 dashboard>node-server>Actios>Connect>connect**
 
