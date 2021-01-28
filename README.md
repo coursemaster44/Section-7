@@ -809,6 +809,7 @@ Deployment has been done successfully
 # End of Lab
 
 # ec2forcd-lab-11
+# Follow this Link for installing code-deploy-agent:- https://docs.aws.amazon.com/codedeploy/latest/userguide/codedeploy-agent-operations-install-linux.html
 
 **Step 1.AWS Console>All services>EC2>Launch Instance**
 
@@ -818,8 +819,8 @@ Deployment has been done successfully
 - Click Next:Configure Instance
 
 **Step 4.Leave everything default beside IAM Role and User Data Section**
-- IAM Role - 
-- User Data>As Text:
+- IAM Role - EC2S3FullAccess
+- User Data>As Text:See below
 ```sh
 #!/bin/bash
 $ yum update -y
@@ -854,10 +855,14 @@ $ service codedeploy-agent status
 
 **Step 9.Goto EC2 Dashboard**
 - Select node-server>Actions>Connect
+- Type the following command
+
 ```
 $ sudo service codedeploy-agent status
 #You Will see this message "The AWS Codedeploy agent is running as PID xxxx"
 ```
+
+
 # End of lab
 
 # check-app-deployment-on-ec2-lab
