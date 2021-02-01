@@ -15,6 +15,7 @@ Provide the following details:
 Click on Create Folder
 
 **Step 3.Goto AWS Console>Developers Tools>CodeBuild>Build projects>Create build project**
+
 Provide the following details:
 - Project name - first-cd-project
 - In Source Tab
@@ -89,6 +90,7 @@ COMPLETED       - Succeeded
 # AWS CodeBuild : Build Sample App from CodeCommit - Lab
 
 **Step 1. Goto AWS Management Console>Services>Developers Tools>CodeBuild>first-cd-project>Start build**
+
 Provide the following details:
 - Build configuration
   - built type - single build
@@ -108,6 +110,7 @@ $ git commit -m "changed node version to 12"
 $ git push
 ```
 **Step 4. Goto AWS Management Console>Services>Developers Tools>CodeBuild>first-cd-project>Start Build**
+
 Provide the following details:
 - Build configuration 
   - Timeout - 0 Hours 5 Minutes
@@ -145,6 +148,7 @@ $ zip -r Sample-Node_App.zip . -x "_MACOSX"**
 - In Details Copy S3 URI
 
 **Step 4. Goto AWS Management Console>Services>Developers Tools>CodeBuild>Build Projects>Create Build Project**
+
 Provide the following details:
 - Provide Project Configuration
   - project name - cb-project-s3
@@ -587,6 +591,7 @@ Validateservice
 - Select codedeploy hook>Actions>Edit lifecycle hook
 
 **Step 21.Ec2>Auto Scaling groups>asg-cd>Edit Group size**
+
 Put the following value:
 - Desired - 2
 - Minimum - 2
@@ -635,6 +640,7 @@ Now Click on Create target group
 **Step 6. Click on Create in Application Load Balancer**
 
 **Step 7. Configure Load Balancer as following**
+
 In Basic Configuration
 - Name- alb-cd
 - Scheme- internet-facing
@@ -722,6 +728,7 @@ AfterAllowTraffic
 # CodeDeploy Blue Green Deployment - Lab
 
 **Step 1.AWS Console>Developers>CodeDeploy>Applications>cd-app>cd-app-asg-alb>cd-app-asg-alb>edit**
+
 Provide the following details:
   - Deployment type - Blue/Green
   - Environment configuration - Select Automatically copy Amazon EC2 Auto Scaling group
@@ -741,6 +748,7 @@ $ git commit -m "changed index color to green"
 $ git push
 ```
 **Step 2.AWS Management Console>Services>Developers Tools>CodeBuild>Build Projects>first-cd-project>Start Build**
+
 Provide the following details:
 - Change Timeout in build configurationto 0 hours 5 minutes
 - In Source Tab - source version shows "changed index color to green"
@@ -794,6 +802,7 @@ AfterAllowTraffic
 - You can see blue and green color as 2 original and 2 replacement are running now
 
 **Step 11.Now events section in Oiginal instance**
+
 Following 3 hooks will be faced during deregistration
 - BeforeBlockTraffic
 - BlockTraffic
@@ -815,6 +824,7 @@ Following 3 hooks will be faced during deregistration
 - Only Green color instances are running
 
 **Step 16. See the deployment status**
+
 Traffic shifting process
 - Original - 0
 - Replacement - 2
