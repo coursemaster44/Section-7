@@ -3,6 +3,7 @@
 # Create CodeBuild Project - Lab
 
 **Step 1.Goto AWS Console>Services>S3>Create bucket**
+
 Provide the following details:
 - Give Bucket name - sample-node-app-amit
 - Unblock all public access & acknowledge
